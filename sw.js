@@ -3,7 +3,7 @@
  *
  * Bump CACHE when any shell file changes -- that is what ships an update.
  */
-const CACHE = "pdf-layers-v1";
+const CACHE = "pdf-layers-v2";
 
 const SHELL = [
   "./",

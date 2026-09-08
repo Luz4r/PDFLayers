@@ -183,7 +183,10 @@
 
     if (navigator.canShare && navigator.canShare({ files: [file] })) {
       try {
-        await navigator.share({ files: [file], title: name });
+        // Files only. Passing title/text/url here makes iOS treat them as
+        // extra shared items, and "Save to Files" writes each one out --
+        // which produced a stray `text` file alongside the PDF.
+        await navigator.share({ files: [file] });
         return;
       } catch (err) {
         // The user dismissing the share sheet is not an error.
