@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PDF Layer Toggler</title>
+<meta name="description" content="Hide or show PDF layers on your phone. Works offline; files never leave the device.">
+<meta name="theme-color" content="#1f6feb">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="PDF Layers">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" href="icon-192.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="bar bar-top">
+  <h1>PDF Layers</h1>
+  <button id="open" class="btn btn-primary" type="button">Open PDF</button>
+  <input id="file" type="file" accept="application/pdf,.pdf" hidden>
+</header>
+
+<main id="main">
+
+  <section id="empty" class="empty">
+    <svg viewBox="0 0 24 24" aria-hidden="true" class="empty-icon">
+      <path d="M6 2h8l6 6v14H6z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="M14 2v6h6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="M9 13h6M9 17h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+    <p class="empty-title">No file loaded</p>
+    <p class="empty-sub">Open a PDF to list its layers. Everything happens on your device &mdash; nothing is uploaded.</p>
+  </section>
+
+  <section id="loaded" hidden>
+    <p id="filename" class="filename"></p>
+
+    <div class="toolbar" role="group" aria-label="Bulk actions">
+      <button id="all-on" class="btn" type="button">All on</button>
+      <button id="all-off" class="btn" type="button">All off</button>
+      <button id="reset" class="btn" type="button">Reset</button>
+    </div>
+
+    <h2 class="list-title">Layers <span class="hint">on = visible</span></h2>
+    <ul id="layers" class="layers"></ul>
+  </section>
+
+</main>
+
+<footer class="bar bar-bottom">
+  <p id="status" class="status">Open a PDF to list its layers.</p>
+  <button id="save" class="btn btn-primary" type="button" disabled>Save</button>
+</footer>
+
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="pdf-lib.min.js"></script>
+<script src="ocg.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
